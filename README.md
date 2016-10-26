@@ -35,3 +35,19 @@ Want this app for your own school Ping Pong team? - **Just take it**
 # The why
 
 Because **Fuck yeah!** There can only be one greatest mini Ping Pong player in WU16.
+
+# Use with docker-compose
+You can use Docker to instantly create a working environment with PHP, Apache and MySQL.
+
+1. Set configuration in `lib/config.php` and `docker-compose.yml`
+1. update databasename and root password in `docker-compose.yml` according `lib/config.php`
+1. start the docker containers: `docker-compose up -d`
+1. go with your browser to `http://localhost`
+
+Initially you need to populate the database
+1. get the `id` of the docker container with the command `docker ps`
+1. get a bash shell in the database container: `docker exec -it <id> bash`
+1. import the database (get credentials from docker-compose.yml): `mysql -u pingponguser -pVeryS3cure! pingpong < /tmp/pingpong.sql`
+1. go with your browser to `http://localhost` and play on!
+
+To shut down, issue the following command: `docker-compose down`
